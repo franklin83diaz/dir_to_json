@@ -50,9 +50,8 @@ func buildFileStructure(fileExploremodel model.FileExplore) (model.FileStructure
 		IsDir: fileInfo.IsDir(),
 		Path:  fileExploremodel.Path,
 	}
-
 	// If level is 0, return
-	if fileExploremodel.Level == 0 {
+	if fileExploremodel.Level == -1 {
 		return fileStruct, nil
 	}
 
