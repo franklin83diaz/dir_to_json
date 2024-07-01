@@ -13,7 +13,7 @@ func main() {
 		fmt.Println("\n\033[31mNot enough arguments\033[0m")
 		fmt.Println("\nUsage: dir_to_json <path> <level> [show]")
 		fmt.Print("Example: dir_to_json /tmp 2 show\n\n")
-		return
+		panic("Not enough arguments")
 	}
 
 	//get arguments from command line
@@ -30,13 +30,8 @@ func main() {
 	// Third argument is the show hide
 	showHide := false
 	if len(os.Args) > 3 {
-		showHide = args[3] == "show"
+		showHide = args[2] == "show"
 	}
-
-	// Print arguments
-	fmt.Println("Path:", path)
-	fmt.Println("Level:", level)
-	fmt.Println("Show/Hide:", showHide)
 
 	out, err := pkg.DirToJson(path, level, showHide)
 	if err != nil {
